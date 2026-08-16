@@ -1,18 +1,47 @@
-# 💫 About Me:
-🔭 I'm currently working on a World Cup Simulator<br>🌱 I'm currently learning Python & Sql<br>📫 How to reach me armanmadadian82@gmail.com
+# Telegram Product Platform
 
+A modular platform for three sequential Telegram products, beginning with a goal-based Persian finance coach. The downloader and study assistant remain gated until the preceding product completes all ten phases and receives explicit product-owner approval.
 
-# 💻 Tech Stack:
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.shion.dev/api?username=armanmddn&theme=tokyonight&hide_border=false&include_all_commits=true&count_private=false)<br/>
-![](https://streak-stats.demolab.com/?user=armanmddn&theme=tokyonight&hide_border=false)<br/>
-![](https://github-readme-stats.shion.dev/api/top-langs/?username=armanmddn&theme=tokyonight&hide_border=false&include_all_commits=true&count_private=false&layout=compact)
+## Current status
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=armanmddn&theme=tokyonight&no-frame=false&no-bg=true&margin-w=4)
+- Finance F1: product contract and executable backlog complete.
+- Finance F2: repository foundation and local runtime under verification.
+- Finance F3–F10: not started.
+- Downloader and document assistant: planned only; implementation is locked.
 
----
-[![](https://komarev.com/ghpvc/?username=armanmddn&icon=0&color=0)](https://visitcount.itsvg.in)
+See [`docs/roadmap.md`](docs/roadmap.md) for phase goals and approval gates.
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+## Local development
+
+Prerequisites are Docker Engine, Docker Compose v2, and optionally GNU Make. A Telegram token is not required because the default adapter is local and fake.
+
+```bash
+make up
+```
+
+The command builds and starts PostgreSQL, Redis, migrations, FastAPI, the fake finance bot, the worker, and the Finance Mini App. Then open:
+
+- API readiness: <http://localhost:8000/health/ready>
+- Finance Mini App: <http://localhost:5173>
+
+Useful commands:
+
+```bash
+make ps
+make logs
+make check
+make down
+```
+
+Read the complete [local runtime guide](docs/development/local-runtime.md) for configuration, live polling, migrations, and acceptance checks.
+
+## Stack
+
+- Python 3.12, FastAPI, aiogram, SQLAlchemy, Alembic
+- PostgreSQL and Redis
+- React, TypeScript, and Vite
+- Docker Compose
+
+## Security
+
+Copy `.env.example` to `.env` for local overrides. Never commit a real bot token, payment credential, database secret, or private key. Sensitive finance, downloader, and document data remain isolated by product boundary.
