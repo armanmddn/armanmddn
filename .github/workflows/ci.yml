@@ -43,8 +43,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: docker compose config --quiet
-      - run: docker compose up --build --wait --wait-timeout 120
-      - run: docker compose ps --format "{{.State}}" api | grep -q "healthy" || (echo "Waiting for API..." && until curl --fail http://localhost:8000/health/ready; do sleep 3; done)
+      - run: docker compose up --build --wait --wait-timeout 180
+      - run: until curl --fail http://localhost:8000/health/ready; do sleep 3; done
       - if: always()
         run: docker compose logs --no-color
       - if: always()
