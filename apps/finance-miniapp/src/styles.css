@@ -1,0 +1,75 @@
+:root {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #f7f9fc;
+  background: #101827;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input { font: inherit; }
+
+.app-shell {
+  width: min(100%, 42rem);
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: max(1.25rem, env(safe-area-inset-top)) 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: radial-gradient(circle at 90% 5%, #22375f 0, #101827 38%);
+}
+
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.topbar h1 { margin: .15rem 0 0; font-size: 1.45rem; }
+.eyebrow { margin: 0; color: #8fa8d8; font-size: .75rem; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .55rem .75rem;
+  border: 1px solid #35445f;
+  border-radius: 999px;
+  color: #c9d2e3;
+  font-size: .75rem;
+}
+.status__dot { width: .55rem; height: .55rem; border-radius: 50%; background: #f2bb48; }
+.status--available .status__dot { background: #3dd39c; }
+.status--unavailable .status__dot { background: #ff6678; }
+
+.hero {
+  margin-block: auto;
+  padding: 2rem 1.35rem;
+  text-align: center;
+  border: 1px solid #334667;
+  border-radius: 1.5rem;
+  background: rgba(30, 43, 67, .82);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .22);
+}
+.hero__icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1rem;
+  border-radius: 1rem;
+  background: #6f8cff;
+  color: #101827;
+  font-weight: 800;
+}
+.hero h2 { margin: 0; font-size: 1.6rem; line-height: 1.5; }
+.hero > p:not(.hero__icon) { margin: .75rem auto 1.5rem; color: #b8c2d5; line-height: 1.9; }
+.hero button { width: 100%; padding: .9rem 1rem; border: 0; border-radius: .85rem; background: #6f8cff; color: #101827; font-weight: 800; }
+.hero button:disabled { cursor: not-allowed; opacity: .72; }
+.hero small { display: block; margin-top: .8rem; color: #8491a8; }
+
+.runtime-info { display: flex; justify-content: space-between; gap: 1rem; color: #7f8da6; font-size: .7rem; direction: rtl; }
+.runtime-info__url { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; direction: ltr; }
+
+@media (min-width: 40rem) {
+  .app-shell { min-height: calc(100vh - 2rem); margin-block: 1rem; border-radius: 2rem; }
+  .hero { padding: 3rem; }
+}
