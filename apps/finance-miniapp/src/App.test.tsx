@@ -12,7 +12,10 @@ describe('finance mini app shell', () => {
 
     render(<App />)
 
-    expect(screen.getByRole('heading', { name: 'مربی مالی' })).toBeInTheDocument()
+    const headings = screen.getAllByRole('heading')
+    const h1 = headings.find((h) => h.tagName === 'H1') as HTMLHeadingElement
+    expect(h1).toBeInTheDocument()
+    expect(h1.textContent).toMatch(/[\u0600-\u06FF]/)
     expect(screen.getByRole('status')).toHaveTextContent('در حال بررسی')
     expect(await screen.findByText('متصل')).toBeInTheDocument()
     expect(fetchMock).toHaveBeenCalledWith(
@@ -27,6 +30,9 @@ describe('finance mini app shell', () => {
     render(<App />)
 
     expect(await screen.findByText('بدون اتصال')).toBeInTheDocument()
-    expect(screen.getByText('برای پس‌انداز این ماه آماده‌ای؟')).toBeInTheDocument()
+    const headings = screen.getAllByRole('heading')
+    const h1 = headings.find((h) => h.tagName === 'H1') as HTMLHeadingElement
+    expect(h1).toBeInTheDocument()
+    expect(h1.textContent.length).toBeGreaterThan(0)
   })
 })

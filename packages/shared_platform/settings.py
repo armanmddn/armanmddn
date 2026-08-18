@@ -36,6 +36,13 @@ class AppSettings(BaseSettings):
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:5173"])
 
     @model_validator(mode="after")
+    def normalize_empty_token(self) -> "AppSettings":
+        """Treat empty string token as None."""
+        if self.telegram_bot_token is not None and self.telegram_bot_token.get_secret_value() == "":
+            self.telegram_bot_token = None
+        return self
+
+    @model_validator(mode="after")
     def require_token_for_live_telegram(self) -> "AppSettings":
         if self.telegram_adapter == "live" and not (
             self.telegram_bot_token and self.telegram_bot_token.get_secret_value()

@@ -1,9 +1,12 @@
 FROM node:22-alpine
 
 WORKDIR /workspace/apps/finance-miniapp
+
 COPY apps/finance-miniapp/package*.json ./
-RUN npm install
+RUN npm ci
+RUN chown -R node:node /workspace/apps/finance-miniapp
 COPY apps/finance-miniapp ./
+RUN chown -R node:node /workspace/apps/finance-miniapp
 
 USER node
 EXPOSE 5173
