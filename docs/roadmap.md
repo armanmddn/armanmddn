@@ -23,7 +23,7 @@ Credentials are requested only when the relevant phase needs them and must never
 - **Check:** internal consistency and traceability from promise to backlog.
 - **Acceptance:** every MVP capability belongs to a later phase; out-of-scope work is explicit; later bots remain gated.
 
-### F2. Repository foundation and local runtime — verification in progress
+### F2. Repository foundation and local runtime — complete
 
 - **Goal:** one-command local startup for API, bot, PostgreSQL, Redis, worker, and web app.
 - **Inputs:** development Bot Token may be requested for live polling; a fake adapter must work without it.

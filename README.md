@@ -5,7 +5,7 @@ A modular platform for three sequential Telegram products, beginning with a goal
 ## Current status
 
 - Finance F1: product contract and executable backlog complete.
-- Finance F2: repository foundation and local runtime under verification.
+- Finance F2: repository foundation and local runtime complete.
 - Finance F3–F10: not started.
 - Downloader and document assistant: planned only; implementation is locked.
 
@@ -31,6 +31,7 @@ make ps
 make logs
 make check
 make down
+make reset
 ```
 
 Read the complete [local runtime guide](docs/development/local-runtime.md) for configuration, live polling, migrations, and acceptance checks.
