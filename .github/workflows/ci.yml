@@ -42,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: cp .env.example .env || true
       - run: docker compose config --quiet
       - run: docker compose up --build --wait --wait-timeout 180
       - run: until curl --fail http://localhost:8000/health/ready; do sleep 3; done
